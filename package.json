@@ -1,0 +1,20 @@
+{
+  "name": "vapeapp",
+  "version": "1.0.0",
+  "description": "vapeclub stock management app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hapi",
+    "angular"
+  ],
+  "author": "Artem Vladimirov",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "config": "^1.20.1",
+    "hapi": "^13.3.0",
+    "mongoose": "^4.4.12"
+  }
+}
