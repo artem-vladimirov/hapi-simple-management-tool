@@ -1,4 +1,4 @@
-// Add the route
+'use strict';
 
 module.exports = {
   method: 'GET',
