@@ -15,6 +15,15 @@ const config = {
       port: 27017,
       database: 'test'
     }
+  },
+
+  views: {
+    engines: { jade: require('jade') },
+    relativeTo: __dirname,
+    path: '../views',
+    compileOptions: {
+      pretty: true
+    }
   }
 };
 

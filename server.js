@@ -12,13 +12,7 @@ server.route(routes);
 
 const plugins = [
   {
-    register: require('hapi-auth-basic')
-  },
-  {
-    register: require('hapi-authorization'),
-    options: {
-      roles: false  // By setting to false, you are not using an authorization hierarchy and you do not need to specify all the potential roles here
-    }
+    register: require('vision')
   }
 ];
 
@@ -27,6 +21,9 @@ server.register(plugins, (err) => {
     console.error(err);
     throw err;
   }
+
+  server.views(config.views);
+  
 });
 
 // Start the server

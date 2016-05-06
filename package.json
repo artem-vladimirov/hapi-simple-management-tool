@@ -17,8 +17,10 @@
     "hapi": "^13.3.0",
     "hapi-auth-basic": "^4.1.0",
     "hapi-authorization": "^3.0.2",
+    "jade": "^1.11.0",
     "joi": "^8.0.5",
     "lodash": "^4.11.1",
-    "mongoose": "^4.4.12"
+    "mongoose": "^4.4.12",
+    "vision": "^4.1.0"
   }
 }

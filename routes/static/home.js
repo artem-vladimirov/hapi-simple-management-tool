@@ -2,7 +2,6 @@ module.exports = {
   method: 'GET',
   path:'/',
   handler: function (request, reply) {
-
-    return reply('home');
+    reply.view('index');
   }
 };
