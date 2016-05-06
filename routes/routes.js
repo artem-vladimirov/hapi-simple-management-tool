@@ -1,4 +1,9 @@
-const authRoutes = require('./auth');
+const authRoutes = [
+  require('./auth/login').login,
+  require('./auth/login').loginProceed,
+  require('./auth/signIn').signIn,
+  require('./auth/signIn').signInProceed
+];
 
 const siteRoutes = [
   require('./static/home'),
