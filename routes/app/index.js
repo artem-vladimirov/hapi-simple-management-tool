@@ -3,8 +3,9 @@
 module.exports = {
   method: 'GET',
   path:'/app',
+  config: { auth: 'jwt' },
   handler: function (request, reply) {
-
-    return reply('App here');
+    reply({text: 'You used a Token!'})
+      .header("Authorization", request.headers.authorization);
   }
 };
