@@ -1,14 +1,15 @@
 module.exports = {
-  signIn: {
+  signUp: {
     method: 'GET',
-    path: '/signin',
+    path: '/signup',
+    config: {auth: false},
     handler: function(request, reply) {
-      reply.view('auth/signin');
+      reply.view('auth/signup');
     }
   },
-  signInProceed: {
+  signUpProceed: {
     method: 'POST',
-    path:'/signin',
+    path:'/signup',
     handler: function(request, reply) {
       //@todo accept registering 
       reply();

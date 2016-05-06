@@ -1,8 +1,8 @@
 const authRoutes = [
   require('./auth/login').login,
   require('./auth/login').loginProceed,
-  require('./auth/signIn').signIn,
-  require('./auth/signIn').signInProceed
+  require('./auth/signUp').signUp,
+  require('./auth/signUp').signUpProceed
 ];
 
 const siteRoutes = [
