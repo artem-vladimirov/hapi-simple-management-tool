@@ -1,3 +1,5 @@
+const authRoutes = require('./auth');
+
 const siteRoutes = [
   require('./static/home'),
   require('./static/catalog'),
@@ -8,4 +10,4 @@ const appRoutes = [
   require('./app/index')
 ];
 
-module.exports = [].concat(siteRoutes, appRoutes);
+module.exports = [].concat(authRoutes, siteRoutes, appRoutes);

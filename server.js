@@ -47,7 +47,7 @@ server.register(plugins, (err) => {
   server.views(config.views);
   
   server.auth.strategy('jwt', 'jwt',
-    { key: 'NeverShareYourSecret',          // Never Share your secret key
+    { key: config.authKey,          // Never Share your secret key
       validateFunc: validate,            // validate function defined above
       verifyOptions: { algorithms: [ 'HS256' ] } // pick a strong algorithm
     });

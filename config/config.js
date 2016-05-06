@@ -24,7 +24,9 @@ const config = {
     compileOptions: {
       pretty: true
     }
-  }
+  },
+  
+  authKey: 'NeverShareYourSecret' //should be overwritten in the local.js file
 };
 
 module.exports = _.merge(config, local);
