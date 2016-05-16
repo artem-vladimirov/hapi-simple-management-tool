@@ -1,8 +1,9 @@
 html
     head
     body
-        form(action='signup')
-            input(name='name', type='text')
-            input(name='password', type='password')
-            input(name='password_confirmation', type='password')
+        form(action='signup', method='POST')
+            input(name='username', type='text', placeholder='username')
+            input(name='password', type='password', placeholder='password')
+            input(name='email', type='email', placeholder='email')
+            //input(name='password_confirmation', type='password')
             input(type='submit', value='SignUp')

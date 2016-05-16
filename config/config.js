@@ -13,7 +13,7 @@ const config = {
     mongo: {
       username: '',
       password: '',
-      url: 'localhost',
+      url: 'mongodb://localhost:27017/test',
       port: 27017,
       database: 'test'
     }

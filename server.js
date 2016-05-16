@@ -1,7 +1,9 @@
 'use strict';
 
 const Hapi = require('hapi');
-const routes = require('./routes/routes');
+const glob = require('glob');
+const path = require('path');
+const mongoose = require('mongoose');
 const config = require('./config/config');
 
 // Create a server with a host and port
@@ -13,31 +15,10 @@ const plugins = [
     register: require('vision')
   },
   {
-    register: require('hapi-auth-jwt2')
+    register: require('hapi-auth-jwt')
   }
 ];
 
-
-var validate = function (decoded, request, callback) {
-  // do your checks to see if the person is valid
-
-  var people = { // our "users database"
-    1: {
-      username: 'john',
-      password: '$2a$10$iqJSHD.BGr0E2IxQwYgJmeP3NvhPrXAeLSaGCj6IR/XU5QtjVu5Tm',   // 'secret'
-      name: 'John Doe',
-      id: '2133d32a'
-    }
-  };
-
-  console.log(decoded);
-  if (!people[decoded.id]) {
-    return callback(null, false);
-  }
-  else {
-    return callback(null, true);
-  }
-};
 
 
 server.register(plugins, (err) => {
@@ -47,16 +28,21 @@ server.register(plugins, (err) => {
   }
 
   server.views(config.views);
-  
-  server.auth.strategy('jwt', 'jwt',
-    { key: config.authKey,          // Never Share your secret key
-      validateFunc: validate,            // validate function defined above
-      verifyOptions: { algorithms: [ 'HS256' ] } // pick a strong algorithm
-    });
 
-  server.auth.default('jwt');
+  server.auth.strategy('jwt', 'jwt', {
+    key: config.authKey,
+    verifyOptions: { algorithms: ['HS256'] }
+  });
 
-  server.route(routes);
+  // server.auth.default('jwt');
+
+  glob.sync('api/routes/**/*.js', {
+    root: __dirname
+  }).forEach(file => {
+    const route = require(path.join(__dirname, file));
+    console.log(route);
+    server.route(route);
+  });
   
 });
 
@@ -66,6 +52,15 @@ server.start((err) => {
   if (err) {
     throw err;
   }
+
+  mongoose.connect(config.connections.mongo.url, {
+    user: config.connections.mongo.user,
+    pass: config.connections.mongo.password
+  }, (err) => {
+    if (err) {
+      throw err;
+    }
+  });
   console.log('Server running at:', server.info.uri);
 });
 
