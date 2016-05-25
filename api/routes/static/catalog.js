@@ -4,6 +4,6 @@ module.exports = {
   method: 'GET',
   path:'/catalog',
   handler: function (request, reply) {
-    reply.view('static/catalog');
+    reply.view('static/catalog', {object: 'catalog'});
   }
 };

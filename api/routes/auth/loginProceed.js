@@ -1,19 +1,26 @@
 'use strict';
 
+const bcrypt = require('bcrypt');
+// const Boom = require('boom');
+// const User = require('../../models/user/User');
+const AuthenticateUserSchema = require('../../models/user/AuthenticateUserSchema');
+const Util = require('../../models/user/Util');
+
 module.exports = {
   method: 'POST',
   path:'/login',
-  handler: function(request, reply) {
-    console.log(request);
-    var people = { // our "users database"
-      1: {
-        username: 'john',
-        password: '$2a$10$iqJSHD.BGr0E2IxQwYgJmeP3NvhPrXAeLSaGCj6IR/XU5QtjVu5Tm',   // 'secret'
-        name: 'John Doe',
-        id: '2133d32a'
-      }
-    };
-    //@todo set token to the headers and find the way how to properly validate the user
-    return reply('Apply login action');
+  config: {
+    // Check the user's password against the DB
+    pre: [
+      { method: Util.verifyCredentials, assign: 'user' }
+    ],
+    handler: (req, res) => {
+      // If the user's password is correct, we can issue a token.
+      // If it was incorrect, the error will bubble up from the pre method
+      res.view('index', { id_token: Util.createToken(req.pre.user) });
+    },
+    validate: {
+      payload: AuthenticateUserSchema
+    }
   }
 };

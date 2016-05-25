@@ -28,7 +28,7 @@ const config = {
     }
   },
   
-  authKey: 'NeverShareYourSecret' //should be overwritten in the local.js file
+  authKey: 'C97FVn52QIw1+FsER/2kgVPg1kgYnc7nwgfPEovHWucMyySFhDFxBnE0/d/9+uTjGKKW+kJozN3t0HoIkamsjMN7Z9pN1IdnGlZMus58MEDv43d2AoaMYis+dfVVKco5zzEDDXKmFnWOqfu+Jz5NPWk2oN1e4sG7vwgzT7fkpXBzEJhRtRgT7xLd71G8bhvk8Xe1mflXCPxk4bFxu67p7KufADSCmAjWRIVxQweoH+U1htJfU38+1AD+l+5ptNnGF778hflFxqD+HNbkl721mAfv+mRcJTpyUTacTsV7O0Dsv9KhUDUNNlBEYFrgFfQGTsP9eJGi82UA8t7oQkp1iQ==' //should be overwritten in the local.js file
 };
 
 module.exports = _.merge(config, local);
